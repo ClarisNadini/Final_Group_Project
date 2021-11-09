@@ -4,7 +4,9 @@
  *Also calls all the other classes
  *Redirects to home page when suggesuflly signed up
  */
+
  $email;
+ 
 
 
 if(isset($_POST["submit1"])){
@@ -23,6 +25,7 @@ if(isset($_POST["submit1"])){
 
 
     //Running error handlers and user signup
+
      $login->LoginUser();
 
     //Moving to home page
@@ -34,3 +37,10 @@ if(isset($_POST["submit1"])){
 }
 
 ;
+
+     $login->validateInput();
+
+    //Moving to home page
+    header("location:../index.php?error=none");
+};
+
