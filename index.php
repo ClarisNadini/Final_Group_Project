@@ -22,6 +22,14 @@
 
             </form>
 
+            <form action="includes/deleteUser.inc.php" method="POST">  
+            <input type="email" name="email" placeholder="Please input you email to delete your account">
+                
+            <button type= "submit1" name="delete"> </button>
+
+
+            </form>
+ main
         </div>
     </body>
 </html>

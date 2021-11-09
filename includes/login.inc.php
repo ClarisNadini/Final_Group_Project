@@ -5,6 +5,9 @@
  *Redirects to home page when suggesuflly signed up
  */
 
+ $email;
+ 
+
 
 if(isset($_POST["submit1"])){
     //Grabbing the data from the user
@@ -22,8 +25,22 @@ if(isset($_POST["submit1"])){
 
 
     //Running error handlers and user signup
+
+     $login->LoginUser();
+
+    //Moving to home page
+    header("location:../index.php?error=none");
+}
+//stores the email of the user to be used in the notification classes
+ function storeEmail(){
+    return $email=$_POST['email'];
+}
+
+;
+
      $login->validateInput();
 
     //Moving to home page
     header("location:../index.php?error=none");
 };
+

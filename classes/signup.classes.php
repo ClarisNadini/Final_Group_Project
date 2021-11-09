@@ -4,11 +4,18 @@
  */
 include "db.php";
  class SignUp extends database{
-// Insert into the database  the new user 
-    public function setUser($firstname,$lastname,$school,$email,$password){
+// Insert into the database  the new user
+    private $dbconnect;
+    function __construct()
+    {
         $dbconnect= new database();
-        $connection= $dbconnect->connect();
-       $stmt= $connection->prepare('INSERT INTO user (firstname,lastname,school,email,password) VALUES (?,?,?,?,?);'); 
+        $this->dbconnect= $dbconnect;
+    
+     }
+
+    public function setUser($firstname,$lastname,$school,$email,$password){
+        $connection= $this->dbconnect->connect();
+        $stmt= $connection->prepare('INSERT INTO user (firstname,lastname,school,email,password) VALUES (?,?,?,?,?);'); 
        
         $option=[
             'cost'=>12,
@@ -28,11 +35,11 @@ include "db.php";
 
     $stmt=null;
     }
-    //check of the user email already exists in the database
 
+    //check of the user email already exists in the database
 protected function checkUser($email){
-        $dbconnect= new database();
-        $connection= $dbconnect->connect();
+        
+        $connection=$this->dbconnect->connect();
         $result='';
         $stmt= $connection->prepare('SELECT firstname, lastname FROM user WHERE email=?;');
 
@@ -52,9 +59,17 @@ protected function checkUser($email){
 
         return $result;
     }
-  
+
+    //stores the email of the user to be used in the notification classes
+    protected function storeEmail(){
+        return $this->email;
+    }
 
  }
+
+ 
+
+
  
 
  

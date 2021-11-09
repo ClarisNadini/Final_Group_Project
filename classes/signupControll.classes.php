@@ -20,6 +20,7 @@
     private $password;
     private $passwordcon;
 
+    //instantiate the variables
     function __construct($firstname,$lastname,$school,$email,$password,$passwordcon)
     {
         $this->firstname= $firstname;
@@ -31,7 +32,7 @@
         
     }
 
-    //control for input
+    //Validation for input
   public  function emptyinput(){
         $result= '';
         if (empty($this->firstname)||empty($this->lastname)||empty($this->school)||empty($this->email)||empty($this->password)||empty($this->passwordcon)){
@@ -42,13 +43,15 @@
         }
         return $result;
         }
-    //control password
+
+        
+    //Validation for the password
     function invalidpassword(){
         $result= '';
         $uppercase= preg_match('@[A-Z]@',$this->password);
         $lowercase = preg_match('@[a-z]@', $this->password);
         $number    = preg_match('@[0-9]@', $this->password);
-        $specialChars = preg_match('@[^\w]@', $this->password);
+        $specialChars = preg_match('@[^\!#$%&*]@', $this->password);
 
         if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($this->password) < 8) {
             return $result=false;
@@ -58,7 +61,8 @@
         return $result;
     }
 
-    //validate email
+
+    //Validation for the email
     function invalidemail(){
         $result='';
         if (!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
@@ -70,6 +74,7 @@
         return $result;
     }
 
+    //Validation for the password if the two password inputed are equal
     function comparePassword(){
         $result='';
         if($this->password!==$this->passwordcon){
@@ -80,7 +85,7 @@
         }
         return $result;
     }
-
+    //Checks if the user exists by checking if the email they put already exist in the database
     function Usercheck(){
         $result='';
         $userObj= new SignUp();
@@ -92,7 +97,10 @@
         }
         return $result;
     }
-//Checks all the validation done
+    
+
+//Checks all the validation function
+//If no errors  then it signs up the user
    public function validateInput(){
         if ($this->emptyinput()==false){
             header('location: ../index.php?error=emptyinput');

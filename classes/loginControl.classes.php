@@ -17,8 +17,8 @@
     private $email;
     private $password;
     
-
-    function __construct($email,$password,)
+    //instantiate  the variables
+    function __construct($email,$password)
     {
         
         $this->password=$password;
@@ -27,7 +27,7 @@
     }
 
     //control for input
-  public  function emptyinput(){
+    function emptyinput(){
         $result= '';
         if (empty($this->email)||empty($this->password)){
             return $result=false;
@@ -52,7 +52,7 @@
     }
 
   
-
+    //Validate if the user exists by checking the databse
     function Usercheck(){
         $result='';
         $userObj= new Login();
@@ -64,12 +64,15 @@
         }
         return $result;
     }
-//Checks all the validation done
-   public function validateInput(){
+
+ 
+    //Checks all the validation done
+   public function LoginUser(){
         if ($this->emptyinput()==false){
             header('location: ../index.php?error=emptyinput');
             exit();
              }
+             $this->getUser($this->email,$this->password);
             }  
 }
 
