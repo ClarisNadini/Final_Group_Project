@@ -27,7 +27,7 @@ class CreateMetime extends database{
             $stmt=null;
 
             //Redirects and show the error in the url
-            header('location: ../MetimeView.php?error=stmtfailed');
+            header('location: ../MainInterface/MeTime.php?error=stmtfailed');
             exit();
     }
     

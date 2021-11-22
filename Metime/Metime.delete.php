@@ -23,7 +23,7 @@ class metimeDelete extends database{
         $id =$_POST['id']?? null;
 
         if(!$id){
-            header('Location: ../MetimeView.php');
+             header('Location:../MainInterface/MeTime.php');
             exit;
         }
         
@@ -36,7 +36,7 @@ class metimeDelete extends database{
         //executes the query
         $statement->execute();
 
-        header('Location:../MetimeView.php');
+        header('Location:../MainInterface/MeTime.php');
         }
 }
 

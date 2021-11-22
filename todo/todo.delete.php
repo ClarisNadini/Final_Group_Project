@@ -23,7 +23,7 @@ class todoDelete extends database{
         $id =$_POST['id']?? null;
 
         if(!$id){
-            header('Location: ../TodoView.php');
+            header('Location: ../MainInterface/ToDoList.php');
             exit;
         }
         
@@ -37,7 +37,7 @@ class todoDelete extends database{
         $statement->execute();
 
          //redirects to the classView when the process is over
-        header('Location:../TodoView.php');
+        header('Location:../MainInterface/ToDoList.php');
         }
 }
 

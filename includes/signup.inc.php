@@ -1,4 +1,5 @@
 <?php
+
 /**
  *this class get the input from the user frontend
  *Also calls all the other classes
@@ -6,26 +7,26 @@
  */
 
 
-if(isset($_POST["submit"])){
+if (isset($_POST["Usersubmit"])) {
     //Grabbing the data from the user
-    $firstname=$_POST['firstname'];
-    $lastname=$_POST['lastname'];
-    $email=$_POST['email'];
-    $school=$_POST['school'];
-    $password=$_POST['password'];
-    $passwordcon=$_POST['passwordcon'];
-   
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $school = $_POST['school'];
+    $password = $_POST['password'];
+    $passwordcon = $_POST['passwordcon'];
+
     echo $firstname;
 
     //Instantiate SignupContr class
 
     include "../classes/signupControll.classes.php";
-     $signup= new SignUpContr($firstname,$lastname,$school,$email,$password,$passwordcon);
+    $signup = new SignUpContr($firstname, $lastname, $school, $email, $password, $passwordcon);
 
 
     //Running error handlers and user signup
-     $signup->validateInput();
+    $signup->validateInput();
 
     //Moving to home page
-    header("location:../index.php?error=none");
+    header("location:../MainInterface/Home.php?error=none");
 };

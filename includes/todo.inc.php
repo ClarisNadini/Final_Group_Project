@@ -31,6 +31,6 @@ if(isset($_POST["submit"])){
         return $name=$_POST['name'];
     };
     //Moving to home page
-    header("location:../TodoView.php?error=none");
+    header("location:../MainInterface/ToDoList.php?error=none");
 };
 

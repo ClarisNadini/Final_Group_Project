@@ -69,7 +69,7 @@
     //Checks all the validation done
    public function LoginUser(){
         if ($this->emptyinput()==false){
-            header('location: ../index.php?error=emptyinput');
+            header('location: ../LogInPage/LogIn.php?error=emptyinput');
             exit();
              }
              $this->getUser($this->email,$this->password);

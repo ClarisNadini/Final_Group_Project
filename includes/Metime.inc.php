@@ -7,9 +7,6 @@ if(isset($_POST["submit"])){
     $date=$_POST['date'];
 
    
-   
-  
-
     //Instantiate SignupContr class
 
     include "../Metime/MetimeControl.php";
@@ -31,6 +28,6 @@ if(isset($_POST["submit"])){
         return $name=$_POST['name'];
     };
     //Moving to home page
-    header("location:../MetimeView.php?error=none");
+    header("location:../MainInterface/MeTime.php?error=none");
 };
 

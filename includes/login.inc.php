@@ -29,18 +29,6 @@ if(isset($_POST["submit1"])){
      $login->LoginUser();
 
     //Moving to home page
-    header("location:../index.php?error=none");
+    header("location:../MainInterface/Home.php?error=none");
 }
-//stores the email of the user to be used in the notification classes
- function storeEmail(){
-    return $email=$_POST['email'];
-}
-
-;
-
-     $login->validateInput();
-
-    //Moving to home page
-    header("location:../index.php?error=none");
-};
 
